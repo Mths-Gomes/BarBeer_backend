@@ -5,6 +5,8 @@
   "username": "postgres",
   "password": "docker",
   "database": "gostack_barbeer",
+  "synchronize": true,
+  "entities": ["./src/models/*.ts"],
   "migrations": ["./src/database/migrations/*.ts"],
   "cli": {
     "migrationsDir": "./src/database/migrations"
