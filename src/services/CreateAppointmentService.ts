@@ -4,11 +4,6 @@ import { getCustomRepository } from 'typeorm';
 import Appointment from '../models/appointment';
 import AppointmentsRepository from '../repositories/appointmentsRepository';
 
-interface RequestDTO {
-  provider: string;
-  date: Date;
-}
-
 /*
     Single Responsability Principle
     O
@@ -17,22 +12,37 @@ interface RequestDTO {
     Dependency Inversion
  */
 
+interface RequestDTO {
+  provider_id: string;
+  date: Date;
+}
+
 class CreateAppointmentService {
-  public async execute({ provider, date }: RequestDTO): Promise<Appointment> {
+  public async execute({
+    provider_id,
+    date,
+  }: RequestDTO): Promise<Appointment> {
     const appointmentsRepository = getCustomRepository(AppointmentsRepository);
 
     const appointmentDate = startOfHour(date);
+
+    const findAppointmentWithSameProvider =
+      await appointmentsRepository.findOne({
+        where: { provider_id },
+      });
 
     const findAppointmentInSameDate = await appointmentsRepository.findByDate(
       appointmentDate,
     );
 
-    if (findAppointmentInSameDate) {
-      throw Error('This appointment is already booked');
+    if (findAppointmentWithSameProvider) {
+      if (findAppointmentInSameDate) {
+        throw Error('This appointment is already booked');
+      }
     }
 
     const appointment = appointmentsRepository.create({
-      provider,
+      provider_id,
       date: appointmentDate,
     });
 
