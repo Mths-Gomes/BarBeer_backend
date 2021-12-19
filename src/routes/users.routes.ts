@@ -4,7 +4,7 @@ import CreateUserService from '../services/createUserService';
 
 const usersRouter = Router();
 
-interface UserWhitoutPassword {
+interface UserWithoutPassword {
   name: string;
   email: string;
   password?: string;
@@ -22,11 +22,11 @@ usersRouter.post('/', async (request, response) => {
       password,
     });
 
-    const user2: UserWhitoutPassword = user;
+    const userForResponse: UserWithoutPassword = user;
 
-    delete user2.password;
+    delete userForResponse.password;
 
-    return response.json(user2);
+    return response.json(userForResponse);
   } catch (err: any) {
     return response.status(400).json({ error: err.message });
   }
