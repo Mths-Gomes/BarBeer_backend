@@ -11,24 +11,20 @@ interface UserWithoutPassword {
 }
 
 sessionsRouter.post('/', async (request, response) => {
-  try {
-    const { email, password } = request.body;
+  const { email, password } = request.body;
 
-    const authenticateUser = new AuthenticateUserService();
+  const authenticateUser = new AuthenticateUserService();
 
-    const { user, token } = await authenticateUser.execute({
-      email,
-      password,
-    });
+  const { user, token } = await authenticateUser.execute({
+    email,
+    password,
+  });
 
-    const userForResponse: UserWithoutPassword = user;
+  const userForResponse: UserWithoutPassword = user;
 
-    delete userForResponse.password;
+  delete userForResponse.password;
 
-    return response.json({ userForResponse, token });
-  } catch (err: any) {
-    return response.status(err.statusCode).json({ error: err.message });
-  }
+  return response.json({ userForResponse, token });
 });
 
 export default sessionsRouter;
