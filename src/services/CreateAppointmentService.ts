@@ -3,6 +3,7 @@ import { getCustomRepository } from 'typeorm';
 
 import Appointment from '../models/appointment';
 import AppointmentsRepository from '../repositories/appointmentsRepository';
+import AppError from '../errors/AppError';
 
 /*
     Single Responsability Principle
@@ -37,7 +38,7 @@ class CreateAppointmentService {
 
     if (findAppointmentWithSameProvider) {
       if (findAppointmentInSameDate) {
-        throw Error('This appointment is already booked');
+        throw new AppError('This appointment is already booked');
       }
     }
 
