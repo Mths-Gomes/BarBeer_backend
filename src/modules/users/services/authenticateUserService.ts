@@ -3,8 +3,8 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 
 import User from '../infra/typeorm/entities/user';
-import authConfig from '../../../config/auth';
-import AppError from '../../../shared/errors/AppError';
+import authConfig from '@config/auth';
+import AppError from '@shared/errors/AppError';
 
 interface RequestDTO {
   email: string;

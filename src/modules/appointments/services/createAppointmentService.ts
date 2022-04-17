@@ -3,7 +3,7 @@ import { getCustomRepository } from 'typeorm';
 
 import Appointment from '../infra/typeorm/entities/appointment';
 import AppointmentsRepository from '../repositories/appointmentsRepository';
-import AppError from '../../../shared/errors/AppError';
+import AppError from '@shared/errors/AppError';
 
 /*
     Single Responsability Principle
