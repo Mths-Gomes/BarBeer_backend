@@ -1,6 +1,6 @@
 import { EntityRepository, Repository } from 'typeorm';
 
-import Appointment from '../entities/appointment';
+import Appointment from '../infra/typeorm/entities/appointment';
 
 // DTO > Data Transfer Object
 @EntityRepository(Appointment)
