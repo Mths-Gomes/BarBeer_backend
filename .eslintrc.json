@@ -25,7 +25,18 @@
         "ts": "never"
       }
     ],
-    "linebreak-style": 0
+    "linebreak-style": 0,
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "interface",
+        "format": ["PascalCase"],
+        "custom": {
+          "regex": "^I[A-Z]",
+          "match": true
+        }
+      }
+    ]
   },
   "settings": {
     "import/resolver": {
