@@ -5,9 +5,9 @@ import routes from './routes';
 import cors from 'cors';
 
 import uploadConfig from '../src/config/upload';
-import AppError from './errors/AppError';
+import AppError from './shared/errors/AppError';
 
-import './database';
+import './shared/database';
 
 const app = express();
 

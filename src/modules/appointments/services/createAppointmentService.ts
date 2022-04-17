@@ -1,9 +1,9 @@
 import { startOfHour } from 'date-fns';
 import { getCustomRepository } from 'typeorm';
 
-import Appointment from '../models/appointment';
+import Appointment from '../entities/appointment';
 import AppointmentsRepository from '../repositories/appointmentsRepository';
-import AppError from '../errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 
 /*
     Single Responsability Principle
