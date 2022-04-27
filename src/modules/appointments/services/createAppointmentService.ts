@@ -1,4 +1,5 @@
 import { startOfHour } from 'date-fns';
+import { injectable, inject } from 'tsyringe';
 
 import Appointment from '../infra/typeorm/entities/appointment';
 import AppError from '@shared/errors/AppError';
@@ -17,10 +18,14 @@ interface IRequestDTO {
   date: Date;
 }
 
+@injectable()
 class CreateAppointmentService {
   private appointmentsRepository: IAppointmentsRepository;
 
-  constructor(appointmentsRepository: IAppointmentsRepository) {
+  constructor(
+    @inject('AppointmentsRepository')
+    appointmentsRepository: IAppointmentsRepository,
+  ) {
     this.appointmentsRepository = appointmentsRepository;
   }
 

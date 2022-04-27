@@ -1,5 +1,6 @@
 import path from 'path';
 import fs from 'fs';
+import { injectable, inject } from 'tsyringe';
 
 import User from '../infra/typeorm/entities/user';
 import uploadConfig from '@config/upload';
@@ -10,10 +11,15 @@ interface IRequesteDTO {
   user_id: string;
   avatarFileName?: string;
 }
+
+@injectable()
 class UpdateUserAvatarService {
   private usersRepository: IUsersRepository;
 
-  constructor(usersRepository: IUsersRepository) {
+  constructor(
+    @inject('UsersRepository')
+    usersRepository: IUsersRepository,
+  ) {
     this.usersRepository = usersRepository;
   }
 
