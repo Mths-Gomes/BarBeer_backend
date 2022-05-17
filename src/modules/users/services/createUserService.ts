@@ -3,7 +3,7 @@ import { injectable, inject } from 'tsyringe';
 import User from '../infra/typeorm/entities/user';
 import AppError from '@shared/errors/AppError';
 import IUsersRepository from '../repositories/IUsersRepository';
-import IHashProvider from '../providers/hashProvider/models/IHashProvider';
+import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 
 interface IRequestDTO {
   name: string;
@@ -19,6 +19,8 @@ class CreateUserService {
   constructor(
     @inject('UsersRepository')
     usersRepository: IUsersRepository,
+
+    @inject('HashProvider')
     hashProvider: IHashProvider,
   ) {
     this.usersRepository = usersRepository;
