@@ -1,7 +1,7 @@
 import AppError from '@shared/errors/AppError';
 import AuthenticateUserService from './authenticateUserService';
 import FakeUsersRepository from '../repositories/fakes/fakeUsersRepository';
-import FakeHashProvider from '../providers/HashProvider/fakes/fakeHashProvider';
+import FakeHashProvider from '../providers/hashProvider/fakes/fakeHashProvider';
 import CreateUserService from './createUserService';
 
 describe('AuthenticateUser', () => {
