@@ -4,9 +4,9 @@ import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAut
 import AppoitmentsController from '../controllers/AppointmentsController';
 
 const appointmentsRouter = Router();
-const appiontmentsController = new AppoitmentsController();
+const appointmentsController = new AppoitmentsController();
 
 appointmentsRouter.use(ensureAuthenticated);
-appointmentsRouter.post('/', appiontmentsController.create);
+appointmentsRouter.post('/', appointmentsController.create);
 
 export default appointmentsRouter;
